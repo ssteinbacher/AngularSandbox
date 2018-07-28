@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+
+    <!--TypeScript files are compiled using Angular CLI instead of Visual Studio-->
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,5 +16,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="ng build --aot" />
+  </Target>
 
 </Project>
